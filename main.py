@@ -13,7 +13,7 @@ app.secret_key = "123"
 def index():
     with Session() as session:
         merches = session.query(models.Merch).all()
-        merch_form = forms.ZMerchForm()
+        merch_form = forms.MerchForm()
         merch_form.merches.choices = []
 
         for merch in merches:
@@ -28,11 +28,12 @@ def index():
                 merch_db = session.query(models.Merch).where(models.Merch.name == merch).first()
                 merches_db.append(merch_db)
 
-            shop_list = models.ShopList(name=name, merches=merchess_db)
+            shop_list = models.ShopList(name=name, merches=merches_db)
             session.add(shop_list)
             session.commit()
 
         return render_template("index.html", form=merch_form)
+
 
 
 @app.route("/review/", methods=["GET", "POST"])

@@ -44,3 +44,4 @@ class Review(Base):
     grade_id: Mapped[int] = mapped_column(ForeignKey(Grade.id))
     text: Mapped[str] = mapped_column(String())
     grade: Mapped[Grade] = relationship()
+    
