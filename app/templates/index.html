@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="{{ url_for('index') }}" method="post">
+    <div class="form-group">
+        {{ form.name.label }}
+        {{ form.name(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.merches.label }}
+        {{ form.merches(class="form-control") }}
+    </div>
+    {{ form.submit }}
+</form>
+{% endblock content %}
